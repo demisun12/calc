@@ -4,12 +4,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: lavender;
+    background-color: white;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
 }
 
 .calculator {
-    background-color: slateblue;
+    background-color: #bec3eb;
     border-radius: 10px;
     padding: 20px;
     width: 400px;
@@ -19,12 +19,13 @@ body {
 }
 
 #display {
-    background-color: whitesmoke;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     font-size: 4em;
     text-align: right;
     margin-bottom: 15px;
+    color: #4f5998;
 }
 
 #buttons {
@@ -60,80 +61,37 @@ button {
     border: none;
     cursor: pointer;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    background-color: white;
+    background-color: #f2f4fa;
+    color: #4f5998;
 }
 
 #ac, #c {
-    background-color:lavender;
+    background-color:#858dc3;
+    color: white;
 }
 
-
-/* 
- body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+#divide, #multiply, #subtract, #add {
+    background-color: #5f68a5;
+    color: white;
 }
 
-.calculator {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+#equal {
+    color: white;
+    background-color: #49528d;
 }
 
-#display {
-    background-color: #222;
-    color: #fff;
-    font-size: 2em;
-    padding: 10px;
-    text-align: right;
-    border-radius: 5px;
-    margin-bottom: 10px;
+button#ac:hover, button#c:hover {
+    background-color: #737dbd;
 }
 
-#buttons {
-    display: flex;
-    flex-direction: row;
+.row > button:hover {
+    background-color: #ffffff;
 }
 
-#numbers, #operators {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+#operators > button:hover {
+    background-color: #4f5998;
 }
 
-#numbers {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
+button#equal:hover {
+    background-color: #353d73;
 }
-
-#operators {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-
-.row {
-    display: flex;
-    gap: 10px;
-}
-
-button {
-    flex: 1;
-    padding: 15px;
-    font-size: 1.5em;
-    border: none;
-    border-radius: 5px;
-    background-color: #eee;
-    cursor: pointer;
-    transition: background-color 0.2s;
-} */
