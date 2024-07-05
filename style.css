@@ -1,0 +1,139 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: lavender;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+}
+
+.calculator {
+    background-color: slateblue;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px gray;
+}
+
+#display {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 4em;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+#numbers, #operators {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#numbers {
+    flex: 3;
+}
+
+#operators {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 25px;
+    font-size: 1.8em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    background-color: white;
+}
+
+#ac, #c {
+    background-color:lavender;
+}
+
+
+/* 
+ body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#display {
+    background-color: #222;
+    color: #fff;
+    font-size: 2em;
+    padding: 10px;
+    text-align: right;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+#numbers, #operators {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#numbers {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+#operators {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+} */
