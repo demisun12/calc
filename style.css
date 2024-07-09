@@ -26,6 +26,7 @@ body {
     text-align: right;
     margin-bottom: 15px;
     color: #4f5998;
+    min-height: 77px;
 }
 
 #buttons {
