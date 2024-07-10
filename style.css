@@ -24,9 +24,14 @@ body {
     padding: 10px;
     font-size: 4em;
     text-align: right;
-    margin-bottom: 15px;
     color: #4f5998;
-    min-height: 77px;
+    min-height: 100px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#input {
+    margin: auto 0;
 }
 
 #buttons {
@@ -38,6 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 15px;
 }
 
 #numbers {
@@ -49,13 +55,21 @@ body {
     margin-left: 15px;
 }
 
+#operators button {
+    width: 96px;
+}
+
 .row {
     display: flex;
     gap: 15px;
 }
 
+.row button {
+    width: 86px;
+}
+
 button {
-    flex: 1;
+    flex: 3;
     padding: 25px;
     font-size: 1.8em;
     border-radius: 5px;
@@ -66,7 +80,7 @@ button {
     color: #4f5998;
 }
 
-#ac, #c {
+#ac, #c, #neg {
     background-color:#858dc3;
     color: white;
 }

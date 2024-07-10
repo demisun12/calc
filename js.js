@@ -1,30 +1,18 @@
-// operator functions
+// global variables
 
-function add(a,b) {
-    return a + b;
-}
+let num1 = '';
+let num2 = '';
+let operator = '';
 
-function subtract(a,b) {
-    return a - b;
-}
+let equalBtn = false;
 
-function multiply(a,b) {
-    return a * b;
-}
+let currentDisplay = '';
+let display = document.getElementById('input');
 
-function divide(a,b) {
-    if (b !== 0) {
-        return a / b;
-    } else {
-        return NaN;
-    }
-    
-}
-
-// button variables
-
+// buttons
 const clear = document.getElementById('ac');
 const deletes = document.getElementById('c');
+const neg = document.getElementById('neg');
 const one = document.getElementById('one');
 const two = document.getElementById('two');
 const three = document.getElementById('three');
@@ -43,77 +31,129 @@ const times = document.getElementById('multiply');
 const slash = document.getElementById('divide');
 const equals = document.getElementById('equal');
 
-//display function
-let currentDisplay = '';
+// convert to 
 
-// Updated updateDisplay function
-function updateDisplay(value) {
-    let displayValue = document.getElementById('display');
-        let hasDecimal = currentDisplay.includes('.');
-
-    if (value === "AC") {
-        currentDisplay = "";
-    } else if (value === "C") {
-        if (currentDisplay.length > 0) {
-            currentDisplay = currentDisplay.slice(0, -1);
-        }
-    } else {
-        if (value === "." && hasDecimal) {
-            return; // Exit function if trying to add another decimal
-        }
-        if (operator !== '' && currentDisplay !== '' && firstNumber !== '') {
-            currentDisplay = "";
-            operator = '';
-            firstNumber = '';
-            secondNumber = '';
-            currentDisplay += value;
-        } else if (currentDisplay.length < 9) {
-            currentDisplay += value;
-        }
-    }
-
-    displayValue.innerHTML = currentDisplay;
+//operations
+function add(a, b) {
+    return a + b;
 }
 
+function subtract(a, b) {
+    return a - b;
+}
 
-let firstNumber = '';
-let secondNumber = '';
-let operator = '';
+function multiply(a, b) {
+    return a * b;
+}
 
-function operatorDisplay(value) {
-    operator = value;
+function divide(a, b) {
+    if (b !== 0) {
+        return a / b;
+    } else {
+        return "UNDEFINED";
+    }
+}
+
+function clearDisplay() {
+    currentDisplay = '';
+    num1 = '';
+    num2 = '';
+    operator = '';
+    equalBtn = false;
+    display.innerHTML = currentDisplay;
+}
+
+function backSpace() {
     if (currentDisplay !== '') {
-        firstNumber = parseFloat(currentDisplay);
         currentDisplay = '';
     }
+    display.innerHTML = currentDisplay;
 }
 
-equals.onclick = function() {
-    if (currentDisplay !== '') {
-        secondNumber = parseFloat(currentDisplay);
-        let result = operate(firstNumber, secondNumber, operator);
-        let max = 9;
-        let string = result.toString();
-        // Limit the result to a specific number of decimal places
-        if (string.length > max) {
-            let decimalPlaces = 7; // Adjust as needed
-            let final = result.toFixed(decimalPlaces);
-
-            document.getElementById('display').innerHTML = final;
-            currentDisplay = final;
+function negative() {
+    let result = (parseFloat(currentDisplay) * -1);
+    let str = result.toString();
+    if (str.length > 9) {
+        if (str.includes('.') && str.length > 9) {
+            result = result.toExponential(2);
         } else {
-            document.getElementById('display').innerHTML = result;
-            currentDisplay = result;
+            result = result.toExponential(2);
         }
+    }
+    currentDisplay = result
+    console.log(result);
+    console.log(currentDisplay);
+    display.innerHTML = currentDisplay;
+}
+
+function updateDisplay(x) {
+    if (equalBtn) {
+        backSpace();
+        currentDisplay += x;
+        equalBtn = false;
+    } else {
+        if (currentDisplay.length < 8) {
+            currentDisplay += x;
+        }
+    }
+    display.innerHTML = currentDisplay;
+}
+
+
+function operate(a,b,c) {
+    a = parseFloat(a);
+    b = parseFloat(b)
+    if (c === "+") {
+        return add(a,b);
+    } else if (c === "-") {
+        return subtract(a,b);
+    } else if (c === "*") {
+        return  multiply(a,b);
+    } else if (c === "/") {
+        return divide(a,b);
+    };
+}
+
+function operatorClicked(x) {
+    if (currentDisplay === '') {
+        num1 = 0;
+    } else {
+        num1 = currentDisplay;
+    }
+    operator = x;
+    backSpace();
+}
+
+
+
+function equalClicked() {
+    if (!equalBtn && currentDisplay !== '') {
+        num2 = currentDisplay;
+        console.log(num1 + " " + operator + " " + num2)
+        let result = operate(num1, num2, operator);
+        let str = result.toString();
+        console.log(result)
+
+        
+        // Check if the result is greater than 9 characters
+        if (str.length > 9) {
+                display.innerHTML = parseFloat(result).toExponential(2);
+        } else {
+            display.innerHTML = result;
+        }
+
+        currentDisplay = result;
+        num1 = currentDisplay;
+        equalBtn = true;
     }
 }
 
 
 
-//onclick functions
-
-clear.onclick = function() { updateDisplay("AC"); };
-deletes.onclick = function() { updateDisplay("C"); };
+//number buttons 
+clear.onclick = function() { clearDisplay(); };
+deletes.onclick = function() { backSpace(); };
+neg.onclick = function() {negative()};
 one.onclick = function() { updateDisplay(1); };
 two.onclick = function() { updateDisplay(2); };
 three.onclick = function() { updateDisplay(3); };
@@ -124,25 +164,16 @@ seven.onclick = function() { updateDisplay(7); };
 eight.onclick = function() { updateDisplay(8); };
 nine.onclick = function() { updateDisplay(9); };
 zero.onclick = function() { updateDisplay(0); };
-decimal.onclick = function() { updateDisplay("."); };
-
-//calculator btn function
-plus.onclick = function() { operatorDisplay('+'); };
-minus.onclick = function() { operatorDisplay('-'); };
-times.onclick = function() { operatorDisplay('*'); };
-slash.onclick = function() { operatorDisplay('/'); };
-
-
-function operate(a,b,c) {
-    if (c === "+") {
-        return add(a,b);
-    } else if (c === "-") {
-        return subtract(a,b);
-    } else if (c === "*") {
-        return  multiply(a,b);
-    } else if (c === "/") {
-        return divide(a,b);
+decimal.onclick = function() { 
+    if (!currentDisplay.includes('.')) {
+        updateDisplay('.'); 
     }
-}
+};
 
 
+//operator buttons
+plus.onclick = function() { operatorClicked('+'); };
+minus.onclick = function() { operatorClicked('-'); };
+times.onclick = function() { operatorClicked('*'); };
+slash.onclick = function() { operatorClicked('/'); };
+equals.onclick = function() { equalClicked() };
